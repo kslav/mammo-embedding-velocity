@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.ruff_cache/
+.pytest_cache/
+
+# Environments
+.venv/
+.venv_*/
+venv/
+env/
+
+# Data / outputs — never commit patient data, embeddings, or results here
+*.pt
+*.parquet
+*.npy
+*.npz
+results/
+Data/*.csv
+
+# OS / editor
+.DS_Store
+*.swp

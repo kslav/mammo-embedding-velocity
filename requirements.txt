@@ -1,0 +1,24 @@
+# Cohort curation venv (.venv) — steps 01, 02
+#
+# Python: 3.13
+#
+# Reproduce:
+#   uv venv --python 3.13 .venv
+#   source .venv/bin/activate
+#   uv pip install -r requirements.txt
+#
+# Pins reflect the exact versions used to generate the manuscript's
+# matched_cases / matched_controls CSVs.
+
+pandas==3.0.2
+pyarrow==24.0.0
+numpy==2.4.4
+python-dateutil==2.9.0.post0
+pyyaml==6.0.3
+six==1.17.0
+
+# Longitudinal ComBat (Beer 2020) for --combat-method=longitudinal.
+# Source-only install (no PyPI release). Requires Python ≥3.10, so it
+# lives in .venv (not .venv_mammoclip). Pulls statsmodels, scipy, patsy
+# as transitive deps.
+longcombat-py @ git+https://github.com/NoiseFilterT/longcombat-py@32f50a0d20ccb2b42bd599661520197f5c427321

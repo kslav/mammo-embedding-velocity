@@ -1,0 +1,18 @@
+LOCAL_PATHS:
+  # Biopsy cohort — augmented (mesh-path-proven + 335-425d window) with MG_modality
+  # column. n=1,773 patients (785 malignant / 988 biopsy-negative). This is the
+  # manuscript headline cohort; earlier tight (n=1,412, no suffix) and relaxed
+  # (_d365_d800_dt180) CSVs remain in the same directory for reference.
+  matched_cases: /path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis/matched_cases_Density_nPriors_d335_d425_mesh.csv
+  matched_controls: /path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis/matched_controls_Density_nPriors_d335_d425_mesh.csv
+
+  # DICOM catalogue - File paths for all internal mammograms
+  all_dicoms_catalogue: "/path/to/datasets/mammo/mammo_hoppr/manifests/catalogues/mfs_mammo_allInternalData_260327_catalogue_updatedNon12BitImages.parquet"
+  # Description: 27M DICOM records with file paths
+  # Key columns: SOPINSTANCEUID, fullPath, fullPath_cropped_resampledBy2
+
+
+SNOWFLAKE_TABLES:
+  # For later quality control validation
+  RIS_TABLE: "<RIS_TABLE>"
+  VAULT_DICOMS: "<VAULT_DICOMS>"

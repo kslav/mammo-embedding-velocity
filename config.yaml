@@ -1,0 +1,36 @@
+# Central path configuration for the analysis and diagnostic scripts.
+#
+# Fill in the paths for your environment. Scripts read these values through
+# src/config.py. To use a different config file without editing this one, set
+# the MAMMO_CONFIG environment variable to its path.
+#
+# The pipeline steps (src/01_*..04c_*) additionally accept explicit
+# --input-dir / --output-dir style flags; see each script's --help.
+
+# Cohort tables: matched_cases / matched_controls CSVs and the subgroup
+# pid-set CSVs (mgmod_*, modstable, racematch/racemismatch, ...).
+data_dir: /path/to/drift_analysis
+
+# Analysis outputs produced by the pipeline: the per-image embedding tree,
+# per-exam parquets, and per-interval velocity CSVs.
+scratch_dir: /path/to/drift_cohort
+
+# BiomedCLIP outputs (kept in a separate tree in the original study).
+biomedclip_scratch_dir: /path/to/drift_cohort_biomedclip
+
+# Committed result tables shipped with the repo (repo-relative by default).
+results_dir: results
+
+# Raw source / RIS tables used by the curation steps (01/02), if applicable.
+source_tables_dir: /path/to/source_tables
+
+# DICOM catalogue mapping SOPINSTANCEUID -> preprocessed image path (step 03).
+dicom_catalogue: /path/to/dicom_catalogue.parquet
+
+# Model checkpoints. Supply your own for the three public models; HOPPR is
+# proprietary and not distributed.
+checkpoints:
+  mammoclip: /path/to/checkpoints/mammoclip.tar
+  medimageinsight: /path/to/checkpoints/medimageinsight
+  biomedclip: /path/to/checkpoints/biomedclip
+  hoppr: /path/to/checkpoints/hoppr

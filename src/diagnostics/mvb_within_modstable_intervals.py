@@ -11,8 +11,9 @@ import numpy as np, pandas as pd
 from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
-S = Path("/path/to/scratch/drift_cohort")
-D = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR as S, DATA_DIR as D  # noqa: E402
 CONTRA = {
     "Mammo-CLIP": "drift_analysis_augmented_335_425_mammoclip_l_contralat_combat_long",
     "HOPPR": "drift_analysis_augmented_335_425_hoppr_l_contralat_combat_long",

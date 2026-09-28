@@ -12,9 +12,9 @@ from pathlib import Path
 from scipy.stats import wilcoxon
 from statsmodels.stats.multitest import multipletests
 
-D = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
-B = Path("/path/to/scratch/drift_cohort")
-E = Path("/path/to/scratch/drift_cohort_biomedclip")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_DIR as D, SCRATCH_DIR as B, BIOMEDCLIP_SCRATCH_DIR as E  # noqa: E402
 MAXIV = 4
 
 INVASIVE = {"idc", "carcinoma_nos", "ilc", "invasive_nos", "mucinous",

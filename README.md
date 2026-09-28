@@ -10,8 +10,8 @@ longitudinal case–control cohort across four foundation models.
 > **Scope.** This repository is **code only.** It contains no patient data, no
 > image embeddings, and no model weights. To run the pipeline you supply your own
 > cohort tables, images, and public model checkpoints — see
-> [Expected inputs](#expected-inputs). All paths in the code and in
-> `Data/data_paths.yaml` are placeholders (`/path/to/...`) that you fill in.
+> [Expected inputs](#expected-inputs). All paths in the code and in `config.yaml`
+> are placeholders (`/path/to/...`) that you fill in; see [Configuration](#configuration).
 
 ---
 
@@ -27,7 +27,8 @@ src/
   04c_analyze_contralateral_drift.py  # within-patient (biopsied vs. contralateral) design
   utils/                              # shared helpers (aggregation, cancer direction, harmonization, plotting)
   diagnostics/                        # supplementary analyses (effect sizes, subgroups, confounder checks, ...)
-Data/data_paths.yaml                  # path/config template you fill in
+  config.py                           # loads config.yaml (or $MAMMO_CONFIG)
+config.yaml                           # central path config you fill in
 requirements.txt                      # curation environment (steps 01–02)
 requirements_mammoclip.txt            # extraction + analysis environment (steps 03, 04a–c)
 ```
@@ -90,9 +91,10 @@ HOPPR is proprietary and not distributed here.
 | HOPPR | **proprietary / internal — not publicly available**; its results are reported in the paper but cannot be reproduced externally |
 
 ### 4. Paths / config
-Fill in `Data/data_paths.yaml` (every value is a `/path/to/...` placeholder), and
-supply `--input-dir` / `--output-dir` / `--exam-parquet-dir`-style flags as
-documented by each script's `--help`.
+Fill in `config.yaml` (every value is a `/path/to/...` placeholder). Analysis and
+diagnostic scripts read it through `src/config.py`; pipeline steps also accept
+`--input-dir` / `--output-dir` / `--exam-parquet-dir`-style flags (see each
+script's `--help`). See [Configuration](#configuration) for details.
 
 ---
 
@@ -118,6 +120,31 @@ python src/04b_analyze_drift.py --help
 
 The original study ran these on an HPC cluster via a job scheduler, but the
 scripts themselves have no scheduler dependency.
+
+## Configuration
+
+All data, scratch, checkpoint, and output paths are centralized in
+[`config.yaml`](config.yaml) at the repo root. Edit it with your paths, or point
+the `MAMMO_CONFIG` environment variable at your own file. Scripts load it through
+[`src/config.py`](src/config.py):
+
+```python
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # scripts under src/diagnostics/
+from config import DATA_DIR, SCRATCH_DIR, RESULTS_DIR, CHECKPOINTS
+```
+
+Keys: `data_dir` (cohort tables), `scratch_dir` (analysis outputs / embeddings),
+`biomedclip_scratch_dir`, `results_dir` (repo-relative), `dicom_catalogue`,
+`source_tables_dir`, and `checkpoints` (per model).
+
+**Coverage.** The reproduction-core diagnostics (effect sizes, cohort-membership
+build, subtype subgroup, malignant-vs-benign, region pseudonymization) and the
+loader are wired to `config.yaml`; the numbered pipeline steps take paths via CLI
+flags. Some exploratory diagnostics under `src/diagnostics/` still carry inline
+`/path/to/...` placeholders that map 1:1 to the same config keys — set them to
+your values as needed.
 
 ## Reproducibility notes
 

@@ -14,11 +14,11 @@ from pathlib import Path
 
 import pandas as pd
 
-REPO = Path("/path/to/repo")
-D = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
-SCRATCH = Path("/path/to/scratch/drift_cohort")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_DIR as D, SCRATCH_DIR as SCRATCH, RESULTS_DIR  # noqa: E402
 MESH = "Density_nPriors_d335_d425_mesh"
-COH = REPO / "results" / "cohort_membership.csv"
+COH = RESULTS_DIR / "cohort_membership.csv"
 KEY = SCRATCH / "region_code_key.csv"  # private, not committed
 
 

@@ -38,8 +38,9 @@ import pandas as pd
 from scipy.stats import rankdata, wilcoxon, mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
-REPO = Path("/path/to/repo")
-R = REPO / "results"
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import RESULTS_DIR as R  # noqa: E402
 MODELS = ["Mammo-CLIP", "HOPPR", "MedImageInsight", "BiomedCLIP"]
 MAXIV = 4
 

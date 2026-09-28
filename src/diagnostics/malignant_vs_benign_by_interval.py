@@ -36,9 +36,9 @@ import pandas as pd
 from scipy.stats import mannwhitneyu
 from statsmodels.stats.multitest import multipletests
 
-SCRATCH = Path("/path/to/scratch/drift_cohort")
-BIOMEDCLIP_ROOT = Path(
-    "/path/to/scratch/drift_cohort_biomedclip")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR as SCRATCH, BIOMEDCLIP_SCRATCH_DIR as BIOMEDCLIP_ROOT  # noqa: E402
 
 # (between-patient dir, contralateral dir, exam-parquet dir) per model.
 MODELS = {

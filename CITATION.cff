@@ -1,0 +1,52 @@
+cff-version: 1.2.0
+message: "If you use this software or its analyses, please cite the paper below."
+title: "mammo-embedding-velocity: code companion"
+authors:
+  - family-names: Slavkova
+    given-names: Kalina P.
+  - family-names: Brattain
+    given-names: Eric
+  - family-names: Gowd
+    given-names: Aditya
+  - family-names: Pattnaik
+    given-names: Akash
+  - family-names: Delbrouck
+    given-names: Jean-Benoit
+  - family-names: Morgan
+    given-names: Matthew
+  - family-names: Bauml
+    given-names: Julie
+  - family-names: Abderezaei
+    given-names: Javid
+  - family-names: Siddiqui
+    given-names: Khan
+license: CC-BY-NC-SA-4.0
+repository-code: "https://github.com/kslav/mammo-embedding-velocity"
+preferred-citation:
+  type: article
+  title: "Foundation model embeddings capture pre-diagnostic changes on screening mammograms"
+  year: 2026
+  journal: "arXiv preprint"
+  url: "https://arxiv.org/abs/2609.26605"
+  identifiers:
+    - type: other
+      value: "arXiv:2609.26605"
+  authors:
+    - family-names: Slavkova
+      given-names: Kalina P.
+    - family-names: Brattain
+      given-names: Eric
+    - family-names: Gowd
+      given-names: Aditya
+    - family-names: Pattnaik
+      given-names: Akash
+    - family-names: Delbrouck
+      given-names: Jean-Benoit
+    - family-names: Morgan
+      given-names: Matthew
+    - family-names: Bauml
+      given-names: Julie
+    - family-names: Abderezaei
+      given-names: Javid
+    - family-names: Siddiqui
+      given-names: Khan

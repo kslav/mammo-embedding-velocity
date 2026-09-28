@@ -5,7 +5,7 @@ the rate at which frozen foundation-model embeddings move toward a learned
 "cancer direction" in the years *before* a breast biopsy, measured in a matched
 longitudinal case–control cohort across four foundation models.
 
-> Paper: *(arXiv link — TBD)*
+> **Paper:** Slavkova et al., *Foundation model embeddings capture pre-diagnostic changes on screening mammograms.* arXiv:2609.26605. https://arxiv.org/abs/2609.26605
 
 > **Scope.** This repository is **code only.** It contains no patient data, no
 > image embeddings, and no model weights. To run the pipeline you supply your own
@@ -128,10 +128,22 @@ scripts themselves have no scheduler dependency.
 - Results in the paper come from a single data source; external replication needs
   your own cohort plus the public model checkpoints above.
 
+## Citation
+
+If you use this code, please cite:
+
+> Slavkova, K. P., Brattain, E., Gowd, A., Pattnaik, A., Delbrouck, J.-B.,
+> Morgan, M., Bauml, J., Abderezaei, J., & Siddiqui, K. (2026). *Foundation
+> model embeddings capture pre-diagnostic changes on screening mammograms.*
+> arXiv:2609.26605. https://arxiv.org/abs/2609.26605
+
+A machine-readable citation is in [`CITATION.cff`](CITATION.cff).
+
 ## License
 
-**TBD.** A license has not yet been assigned — confirm the appropriate license
-with your institution before making this repository public.
+This repository is licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+See [`LICENSE`](LICENSE) or <https://creativecommons.org/licenses/by-nc-sa/4.0/>.
 
 ## Disclaimer
 

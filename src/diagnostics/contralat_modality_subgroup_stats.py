@@ -22,8 +22,9 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-SCRATCH = Path("/path/to/scratch/drift_cohort")
-CSV_BASE = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR as SCRATCH, DATA_DIR as CSV_BASE  # noqa: E402
 
 # Contralateral scratch dirs are named
 #   drift_analysis_augmented_335_425_{model}{l2}_contralat{harm}

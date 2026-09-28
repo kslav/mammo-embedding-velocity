@@ -24,11 +24,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-SCRATCH = Path("/path/to/scratch/drift_cohort")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR as SCRATCH, DATA_DIR  # noqa: E402
 MII_PARQUET = (SCRATCH / "drift_analysis_augmented_335_425_mii_l_combat_long"
                / "breast" / "exam_embeddings.parquet")
-DRIFT_CSV_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+DRIFT_CSV_DIR = DATA_DIR
 MGMOD_CASES = DRIFT_CSV_DIR / "matched_cases_Density_nPriors_d335_d425_mesh_mgmod_p2.csv"
 MGMOD_CONTROLS = DRIFT_CSV_DIR / "matched_controls_Density_nPriors_d335_d425_mesh_mgmod_p2.csv"
 

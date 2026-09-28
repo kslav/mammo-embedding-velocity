@@ -139,12 +139,12 @@ Keys: `data_dir` (cohort tables), `scratch_dir` (analysis outputs / embeddings),
 `biomedclip_scratch_dir`, `results_dir` (repo-relative), `dicom_catalogue`,
 `source_tables_dir`, and `checkpoints` (per model).
 
-**Coverage.** The reproduction-core diagnostics (effect sizes, cohort-membership
-build, subtype subgroup, malignant-vs-benign, region pseudonymization) and the
-loader are wired to `config.yaml`; the numbered pipeline steps take paths via CLI
-flags. Some exploratory diagnostics under `src/diagnostics/` still carry inline
-`/path/to/...` placeholders that map 1:1 to the same config keys — set them to
-your values as needed.
+**Coverage.** Every diagnostic that reproduces a main-text or supplement result
+is wired to `config.yaml`; the numbered pipeline steps take paths via CLI flags.
+Exploratory one-off scripts with no paper artifact were removed. The effect-size
+tables and the invasive/DCIS subtype analysis were re-run against the source data
+through this config and reproduced the published values exactly, and the
+harmonization unit tests (`tests/`) pass.
 
 ## Reproducibility notes
 

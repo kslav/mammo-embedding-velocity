@@ -40,6 +40,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR, SOURCE_TABLES_DIR  # noqa: E402
 from utils.cohort_embeddings import (  # noqa: E402
     apply_baseline_subtraction,
     apply_zscore,
@@ -51,13 +52,9 @@ logger = logging.getLogger(__name__)
 
 CC_VIEWS = {"CC", "CCID"}
 MLO_VIEWS = {"MLO", "MLOID"}
-DEFAULT_NEW_DIR = Path(
-    "/path/to/scratch/drift_cohort/test_rerun_2026_06_16"
-)
-DEFAULT_EMB_ROOT = Path("/path/to/scratch/drift_cohort/embeddings")
-DEFAULT_OUT = Path(
-    "/path/to/scratch/drift_cohort/diagnostics/harm_ablation_eta"
-)
+DEFAULT_NEW_DIR = SCRATCH_DIR / "test_rerun_2026_06_16"
+DEFAULT_EMB_ROOT = SCRATCH_DIR / "embeddings"
+DEFAULT_OUT = SCRATCH_DIR / "diagnostics" / "harm_ablation_eta"
 
 CELLS = ["___", "l__", "_b_", "__z", "lb_", "l_z", "_bz", "lbz"]
 
@@ -270,8 +267,8 @@ def main() -> None:
                    default=DEFAULT_NEW_DIR / "matched_controls_Density_nPriors_d335_d425_mesh.csv")
     p.add_argument("--embeddings-dir", type=Path, default=DEFAULT_EMB_ROOT)
     p.add_argument("--all-screening-parquet", type=str,
-                   default="/path/to/datasets/mammo/mammo_hoppr/source_tables/"
-                           "all_screening_studies_filtered_llm_meta_08262025.parquet")
+                   default=str(SOURCE_TABLES_DIR
+                               / "all_screening_studies_filtered_llm_meta_08262025.parquet"))
     p.add_argument("--output-dir", type=Path, default=DEFAULT_OUT)
     p.add_argument("--n-per-cell", type=int, default=66,
                    help="Target patients per (subgroup, manufacturer) cell. "

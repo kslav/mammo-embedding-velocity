@@ -15,8 +15,9 @@ import numpy as np, pandas as pd
 from scipy.stats import wilcoxon
 from statsmodels.stats.multitest import multipletests
 
-D = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
-SCRATCH = Path("/path/to/scratch/drift_cohort")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import DATA_DIR as D, SCRATCH_DIR as SCRATCH  # noqa: E402
 CONTRA = {
     "Mammo-CLIP": "drift_analysis_augmented_335_425_mammoclip_l_contralat_combat_long",
     "HOPPR": "drift_analysis_augmented_335_425_hoppr_l_contralat_combat_long",

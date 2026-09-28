@@ -45,9 +45,8 @@ from importlib import import_module
 
 build_pairs = import_module("04b_analyze_drift").build_pairs  # reuse canonical pairing
 
-SCRATCH = Path("/path/to/scratch/drift_cohort")
-DRIFT_CSV_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+from config import SCRATCH_DIR as SCRATCH, DATA_DIR, BIOMEDCLIP_SCRATCH_DIR  # noqa: E402
+DRIFT_CSV_DIR = DATA_DIR
 CASES_CSV = DRIFT_CSV_DIR / "matched_cases_Density_nPriors_d335_d425_mesh.csv"
 CONTROLS_CSV = DRIFT_CSV_DIR / "matched_controls_Density_nPriors_d335_d425_mesh.csv"
 
@@ -56,9 +55,7 @@ BETWEEN = {
     "Mammo-CLIP": SCRATCH / "drift_analysis_augmented_335_425_l_combat_long",
     "HOPPR": SCRATCH / "drift_analysis_augmented_335_425_hoppr_l_combat_long",
     "MedImageInsight": SCRATCH / "drift_analysis_augmented_335_425_mii_l_combat_long",
-    "BiomedCLIP": Path(
-        "/path/to/scratch/drift_cohort_biomedclip/"
-        "drift_analysis_biomedclip_l_combat_long"),
+    "BiomedCLIP": BIOMEDCLIP_SCRATCH_DIR / "drift_analysis_biomedclip_l_combat_long",
 }
 # Within-patient contralateral parquets (breast_both_sides).
 CONTRA = {

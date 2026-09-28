@@ -36,8 +36,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from diagnostics.confounder_check import bin_race, per_patient_race  # noqa: E402
 
 REPO = Path(__file__).resolve().parents[2]
-SCRATCH = Path("/path/to/scratch/drift_cohort")
-CSV_BASE = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+from config import SCRATCH_DIR as SCRATCH, DATA_DIR as CSV_BASE  # noqa: E402
 
 CONTRALAT_SUFFIX = {"mammoclip": "mammoclip_l_contralat_combat_long",
                     "hoppr": "hoppr_l_contralat_combat_long",

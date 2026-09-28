@@ -16,7 +16,9 @@ import json
 from pathlib import Path
 import pandas as pd
 
-BASE = Path("/path/to/scratch/drift_cohort")
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from config import SCRATCH_DIR as BASE  # noqa: E402
 OUT = Path("results/subgroup_numbers.csv")
 
 MODELS = [("mammoclip", ""), ("mammoclip", "_l"), ("hoppr", "_hoppr"),

@@ -30,6 +30,7 @@ import statsmodels.formula.api as smf
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from diagnostics.confounder_check import bin_race, per_patient_race  # noqa: E402
+from config import SCRATCH_DIR  # noqa: E402
 
 
 CELLS = [
@@ -91,7 +92,7 @@ def main() -> None:
     ap.add_argument("--cases-csv", type=Path, required=True)
     ap.add_argument("--controls-csv", type=Path, required=True)
     ap.add_argument("--scratch-base", type=Path,
-                    default=Path("/path/to/scratch/drift_cohort"))
+                    default=SCRATCH_DIR)
     ap.add_argument("--cohort-prefix", type=str,
                     default="drift_analysis_augmented_335_425_")
     ap.add_argument("--out-md", type=Path, required=True)

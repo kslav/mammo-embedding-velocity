@@ -33,17 +33,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 logger = logging.getLogger(__name__)
 
 
-PROD_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis"
-)
-DEFAULT_EMB_ROOT = Path("/path/to/scratch/drift_cohort/embeddings")
-DEFAULT_ALL_SCREENING = (
-    "/path/to/datasets/mammo/mammo_hoppr/source_tables/"
-    "all_screening_studies_filtered_llm_meta_08262025.parquet"
-)
-DEFAULT_OUT = Path(
-    "/path/to/scratch/drift_cohort/diagnostics/manufacturer_combat"
-)
+from config import DATA_DIR, SCRATCH_DIR, SOURCE_TABLES_DIR  # noqa: E402
+PROD_DIR = DATA_DIR
+DEFAULT_EMB_ROOT = SCRATCH_DIR / "embeddings"
+DEFAULT_ALL_SCREENING = str(
+    SOURCE_TABLES_DIR / "all_screening_studies_filtered_llm_meta_08262025.parquet")
+DEFAULT_OUT = SCRATCH_DIR / "diagnostics" / "manufacturer_combat"
 
 CC_VIEWS = {"CC", "CCID"}
 MLO_VIEWS = {"MLO", "MLOID"}

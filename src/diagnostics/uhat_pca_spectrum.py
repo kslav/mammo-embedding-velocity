@@ -46,7 +46,7 @@ matplotlib.rcParams["ps.fonttype"] = 42
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from utils.cohort_embeddings import MALIGNANT, CONTROL  # noqa: E402
 
-SCRATCH = Path("/path/to/scratch/drift_cohort")
+from config import SCRATCH_DIR as SCRATCH, BIOMEDCLIP_SCRATCH_DIR  # noqa: E402
 REPO = Path(__file__).resolve().parents[2]
 # Variant -> {model -> breast exam-parquet dir suffix}. Both are long-ComBat;
 # l_longcombat additionally L2-normalizes per-image before mean-pooling.
@@ -62,7 +62,7 @@ MODEL_DISP = {"mammoclip": "Mammo-CLIP", "hoppr": "HOPPR",
               "mii": "MedImageInsight", "biomedclip": "BiomedCLIP"}
 MODELS = ["mammoclip", "mii", "hoppr", "biomedclip"]
 # BiomedCLIP's headline parquets live in a separate extraction tree.
-_BMC_TREE = Path("/path/to/scratch/drift_cohort_biomedclip")
+_BMC_TREE = BIOMEDCLIP_SCRATCH_DIR
 
 
 def _parquet_path(variant: str, model: str) -> Path:

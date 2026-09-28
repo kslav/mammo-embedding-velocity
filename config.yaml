@@ -21,7 +21,7 @@ biomedclip_scratch_dir: /path/to/drift_cohort_biomedclip
 # Committed result tables shipped with the repo (repo-relative by default).
 results_dir: results
 
-# Raw source / RIS tables used by the curation steps (01/02), if applicable.
+# Raw source metadata tables used by the curation steps (01/02), if applicable.
 source_tables_dir: /path/to/source_tables
 
 # DICOM catalogue mapping SOPINSTANCEUID -> preprocessed image path (step 03).

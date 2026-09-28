@@ -54,7 +54,7 @@ PATH_RIS_DEMOG = (
 )
 # Augmentation source: a previous mesh-path-proven cohort (cancer
 # classification CSV, ~4,521 studies). Studies here have a different
-# linkage path to pathology than the RIS-biopsy-linked default source,
+# linkage path to pathology than the biopsy-linked default source,
 # so they expand the biopsied cohort with non-overlapping patients.
 PATH_MESH_PATH_PROVEN = (
     "/path/to/datasets/mammo/mammo_hoppr/experiment_spreadsheets/breast_cancer/"
@@ -147,7 +147,7 @@ def merge_mesh_path_proven(
 
     The mesh-path-proven CSV is a separate cancer-classification source where
     each study is a screening exam linked to a follow-up diagnostic with
-    pathology. Linkage path differs from the default RIS-biopsy-linked
+    pathology. Linkage path differs from the default biopsy-linked
     source, so it adds biopsied patients we'd otherwise miss.
 
     Steps (matching the cohort_curation_notebook cell-9 logic):
@@ -208,7 +208,7 @@ def merge_mesh_path_proven(
 
     # Drop overlap with the existing trigger/recent_prior cohort to keep
     # the two sources disjoint at the patient level (notebook prioritizes
-    # the RIS-linked source for any overlapping patient).
+    # the biopsy-linked source for any overlapping patient).
     overlap_pids = (
         set(df_trigger_recent_prior["PATIENTID"])
         & set(df_mesh_studyLevel["PATIENTID"])
@@ -633,7 +633,7 @@ def main(
         "MANUFACTURER", "SERIESDESCRIPTION",
     ]].drop_duplicates()
     # Rename image-meta MANUFACTURER → MANUFACTURER_DICOM so the column
-    # provenance is unambiguous downstream (RIS-derived MANUFACTURER is dropped).
+    # provenance is unambiguous downstream (source-table MANUFACTURER is dropped).
     df_all_screening = df_all_screening.rename(columns={"MANUFACTURER": "MANUFACTURER_DICOM"})
     _vc(df_all_screening["IMAGELATERALITY"], "IMAGELATERALITY (all_screening)")
 
@@ -713,10 +713,10 @@ def main(
     _vc(df_all_labels["Breast Density"], "Breast Density (cleaned)")
 
     # ----------------------------------------------------------------- #
-    # RIS demographics                                                  #
+    # source-table demographics                                                  #
     # ----------------------------------------------------------------- #
     df_ris_source = pd.read_parquet(PATH_RIS_DEMOG)
-    # MANUFACTURER intentionally dropped from RIS — image-meta (DICOM) is the
+    # MANUFACTURER intentionally dropped from the source table — image-meta (DICOM) is the
     # authoritative source and lives in df_all_screening as MANUFACTURER_DICOM.
     df_ris_demog = (
         df_ris_source[[
@@ -738,7 +738,7 @@ def main(
         df_ris_demog["PATIENTAGE"].notna().sum() / len(df_ris_demog),
     )
 
-    # Merge labels ← RIS demog ← screening (valid views + EXAM_TYPE + MANUFACTURER_DICOM).
+    # Merge labels ← source demog ← screening (valid views + EXAM_TYPE + MANUFACTURER_DICOM).
     df_all_labels = df_all_labels.merge(df_ris_demog, on="STUDYID", how="left")
     df_all_labels = df_all_labels.merge(df_all_screening, on="STUDYID", how="left")
     logger.info("df_all_labels after merges: records=%d", len(df_all_labels))

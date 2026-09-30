@@ -421,10 +421,10 @@ def process_cohort(
 def main():
     parser = argparse.ArgumentParser(description='Extract Mammo-CLIP embeddings')
     parser.add_argument('--cases-csv', type=str,
-                       default='/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis/matched_cases_Density_nPriors_d335_d425_mesh.csv',
+                       default='/path/to/data/drift_analysis/matched_cases_Density_nPriors_d335_d425_mesh.csv',
                        help='CSV file with matched cases')
     parser.add_argument('--controls-csv', type=str,
-                       default='/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis/matched_controls_Density_nPriors_d335_d425_mesh.csv',
+                       default='/path/to/data/drift_analysis/matched_controls_Density_nPriors_d335_d425_mesh.csv',
                        help='CSV file with matched controls')
     parser.add_argument('--output-dir', type=str,
                        default='/path/to/scratch/drift_cohort/embeddings',

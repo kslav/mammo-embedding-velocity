@@ -35,7 +35,7 @@ import pandas as pd
 from PIL import Image
 
 DRIFT_CSV_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+    "/path/to/data/drift_analysis")
 CASES = DRIFT_CSV_DIR / "matched_cases_Density_nPriors_d335_d425_mesh.csv"
 CONTROLS = DRIFT_CSV_DIR / "matched_controls_Density_nPriors_d335_d425_mesh.csv"
 

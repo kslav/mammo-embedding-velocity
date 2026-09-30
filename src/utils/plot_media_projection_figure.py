@@ -33,7 +33,7 @@ import pandas as pd
 # Depth-2 MG-modality-matched cohort CSVs (case + control PIDs concordant on
 # modality at exam_order 0,1,2); the subset behind Table 2's "Mm" column.
 DRIFT_CSV_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis")
+    "/path/to/data/drift_analysis")
 MGMOD_CASES = DRIFT_CSV_DIR / "matched_cases_Density_nPriors_d335_d425_mesh_mgmod_p2.csv"
 MGMOD_CONTROLS = DRIFT_CSV_DIR / "matched_controls_Density_nPriors_d335_d425_mesh_mgmod_p2.csv"
 

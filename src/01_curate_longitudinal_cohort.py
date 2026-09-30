@@ -31,13 +31,13 @@ def _load_birads0_laterality_fn():
 
 
 DEFAULT_OUTPUT_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis"
+    "/path/to/data/drift_analysis"
 )
 
 # Source-table paths (frozen here rather than data_paths.yaml because the
 # notebook references them inline; centralizing is a separate refactor).
 PATH_PATH_PROVEN = (
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/"
+    "/path/to/data/"
     "mammo_mesh_risBiopsy_linkage_dicomsInVault_strictScreeningBIRADS0_withLLMlabels.parquet"
 )
 PATH_ALL_SCREENING = (

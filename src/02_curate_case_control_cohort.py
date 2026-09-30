@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 DEFAULT_DATA_DIR = Path(
-    "/path/to/data/FM_Mammo/hoppr_data/breast_cancer/drift_analysis"
+    "/path/to/data/drift_analysis"
 )
 # Notebook-pinned catalogue. Older than the 260327 catalogue used elsewhere
 # in the repo, but the user prefers this one for cohort curation — keep it.

@@ -49,7 +49,7 @@ from plot_assets import _p_to_stars, _paired_diffs_for_interval, _holm
 from scipy import stats
 
 SCRATCH = Path("/path/to/scratch/drift_cohort")
-CASES_CSV = Path("/path/to/data/FM_Mammo/hoppr_data/breast_cancer/"
+CASES_CSV = Path("/path/to/data/"
                  "drift_analysis/matched_cases_Density_nPriors_d335_d425_mesh.csv")
 CONTROLS_CSV = Path(str(CASES_CSV).replace("matched_cases", "matched_controls"))
 

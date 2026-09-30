@@ -40,7 +40,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from config import SCRATCH_DIR, SOURCE_TABLES_DIR  # noqa: E402
+from config import DATA_DIR, SCRATCH_DIR, SOURCE_TABLES_DIR  # noqa: E402
 from utils.cohort_embeddings import (  # noqa: E402
     apply_baseline_subtraction,
     apply_zscore,
@@ -52,7 +52,7 @@ logger = logging.getLogger(__name__)
 
 CC_VIEWS = {"CC", "CCID"}
 MLO_VIEWS = {"MLO", "MLOID"}
-DEFAULT_NEW_DIR = SCRATCH_DIR / "test_rerun_2026_06_16"
+DEFAULT_NEW_DIR = DATA_DIR  # matched cohort CSVs live here
 DEFAULT_EMB_ROOT = SCRATCH_DIR / "embeddings"
 DEFAULT_OUT = SCRATCH_DIR / "diagnostics" / "harm_ablation_eta"
 
